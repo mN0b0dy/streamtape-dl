@@ -1,0 +1,12 @@
+certifi==2022.12.7
+charset-normalizer==2.0.12
+colorama==0.4.4
+commonmark==0.9.1
+idna==3.3
+Pygments==2.11.2
+PySSL==0.0.7
+python-decouple==3.6
+requests==2.27.1
+rich==11.2.0
+urllib3==1.26.8
+psutil==5.9.4
