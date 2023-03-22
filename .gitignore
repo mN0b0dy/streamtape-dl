@@ -1,6 +1,9 @@
 cache.json
+temp
+temp.pub
 *.mp4
 *.swp
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
