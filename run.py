@@ -70,7 +70,7 @@ def file_info(file_id):
 ##
 ## main()
 ##
-load_cache()
+cache = load_cache()
 
 if "are_creds_ok" not in cache:
     check_acc_info()
@@ -101,8 +101,9 @@ for link in sys.argv[1:]:
     except Exception as e:
         if info:
             cache[file_id] = {"ticket": ticket, "info": info, "download_link": download_link}
-            save_cache()
+            save_cache(cache)
             try:
+                print(file_id)
                 status = info[file_id]['status']
                 from http import HTTPStatus
                 phrase = HTTPStatus(status).phrase
@@ -164,6 +165,6 @@ for link in sys.argv[1:]:
             print(f"{sep}")
             print(f"ERROR: {e}")
             print(f"{sep}")
-save_cache()
+save_cache(cache)
 
 ## EOF

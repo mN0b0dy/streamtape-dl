@@ -43,12 +43,14 @@ def parseid(string):
 
     file_id = ""
     for i in lst2:
-        if i == "/":
+        if i == "/" or i == "?":
             break;
         else:
             file_id += i
+
+    if DEBUG:
+        print(f"FileID: {file_id}")
     return file_id
-    print(f"FileID: {file_id}")
 
 def sleep():
     # without this sleep method api will return  error 403[forbidden]
@@ -68,16 +70,19 @@ def hrsize(size):
     elif size < pow(1024,4):
         return f"{round(size/(pow(1024,3)), 2)} GB"
 
-def save_cache():
+def save_cache(cache):
     with open(f_cache, 'w') as fp:
         json.dump(cache, fp)
 
 def load_cache():
-    global cache
-    if not os.path.isfile(f_cache):
-        return
-    with open(f_cache, 'r') as fp:
-        cache = json.load(fp)
-        if DEBUG:
-            console.print(f"[DEBUG] Cache loaded! (Entries: {len(cache.keys())})", style="bold cyan")
-        #print(cache)
+    if os.path.isfile(f_cache):
+        with open(f_cache, 'r') as fp:
+            try:
+                cache = json.load(fp)
+            except:
+                return {}
+            if DEBUG:
+                console.print(f"[DEBUG] Cache loaded! (Entries: {len(cache.keys())})", style="bold cyan")
+            #print(cache)
+            return cache
+    return {}

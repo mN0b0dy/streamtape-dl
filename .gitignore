@@ -4,6 +4,7 @@ temp.pub
 *.mp4
 *.swp
 .env
+.cache.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
